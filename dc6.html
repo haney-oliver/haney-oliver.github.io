@@ -56,10 +56,12 @@
     <img src="images/dc6/sc3.png" class="sc">
     <p>And now, we can attempt to navigate to the IP, this time, using the hostname.</p>
     <img src="images/dc6/sc4.png" class="sc">
-    <p>Great! A default Wordpress blog site. Now we can use WPScan to determine the version of Wordpress being used, and enumerate possible users and vulnerabilities. Using the following commands, we leverage a clue from DCAU on Vulnhub, the creator of the CTF and initiate a scan that enumerates vulnerable plugins, vulnerable themes, users, and attempts to login as the discovered users using a password list:</br>
+    <p>Great! A default Wordpress blog site. Now we can use WPScan to determine the version of Wordpress being used, and enumerate possible users and vulnerabilities. Using the following commands, we leverage a clue from DCAU on Vulnhub, the creator of the CTF and initiate a scan that enumerates vulnerable plugins, vulnerable themes, users, and attempts to login as the discovered users using a password list:</p>
+    <p>
         <code class="language-sh">cat /usr/share/wordlists/rockyou.txt | grep k01 > passwords.txt</br>
             wpscan --url http://wordy/ -e vp,vt,u -P passwords.txt
-        </code></p>
+        </code>
+    </p>
     <p> Apparently doing so for the password list is necessary, otherwise, brute forcing with all of rockyou.txt will take years. </p>
     <img src="images/dc6/sc5.png" class="sc">
     <p>And there we go, a valid combination. A quick dirb scan locates the admin directory, where we can try out our new credentials. 
@@ -70,8 +72,8 @@
     <img src="images/dc6/sc7.png" class="sc">
     <p>It appears to be vulnerable to command injection, which we might be able to exploit in order to create a reverse shell.</p>
     <img src="images/dc6/sc8.png" class="sc">
-    <p>Searchsploit provides a path to an html file to be used to set up a netcat listener on the target machine. We can copy that file, edit it for our needs, and deploy the listener.</br>
-        <code class="language-sh">cp /usr/share/exploitdb/exploits/php/webapps/45274.html 45274.html</code></p>
+    <p>Searchsploit provides a path to an html file to be used to set up a netcat listener on the target machine. We can copy that file, edit it for our needs, and deploy the listener.</p>
+    <p><code class="language-sh">cp /usr/share/exploitdb/exploits/php/webapps/45274.html 45274.html</code></p>
     <p>Edit the file to use wordy and wordy's IP address, and to listen on whichever port you choose for netcat:</p>
     <img src="images/dc6/sc9.png" class="sc">
     <p>Next, open the file in firefox, but do not press the button until you have created a netcat listener on your attacking machine.</p>
@@ -87,11 +89,13 @@
     <img src="images/dc6/sc15.png" class="sc">
     <p>Now we can see exactly what permissions jens has using,  <code class="language-sh"></code>`sudo -l` , to determine whether or  not we can somehow get to root.  </p>
     <img src="images/dc6/sc16.png" class="sc">
-    <p>Jens only has permissions to run nmap; However nmap runs as root, so we can execute a script as root to get to root using nmap’s script capabilities.</br>
+    <p>Jens only has permissions to run nmap; However nmap runs as root, so we can execute a script as root to get to root using nmap’s script capabilities.</p>
+    <p>
         <code class="language-sh">TF=$(mktemp)</br>
             echo ‘os.execute(“/bin/sh”)' > $TF</br>
             sudo -u root nmap --script=$TF
-        </code></p>
+        </code>
+    </p>
     <p>And we are now logged in as root. At this point my input no longer showed up, so `root` in the picture below was actually a response to `whoami` .</p>
     <img src="images/dc6/sc17.png" class="sc">
     <p>Now, <code class="language-sh">cd /root</code> to find <code class="language-sh">theflag.txt</code>. And that is DC-6 finished. </p>
