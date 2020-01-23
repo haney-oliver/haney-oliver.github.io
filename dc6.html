@@ -1,107 +1,136 @@
 <html>
+
 <head>
   <title>DC-6 Walkthrough</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-  <link rel="stylesheet" href="css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="css/bootstrap-social.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/bootstrap-social.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <body class="is-preload">
 
-<!-- Main -->
-<div id="main">
-  <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
-    <ul class="nav navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.html#projects">projects<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.html#resume">resume<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.html#about">about<span class="sr-only">(current)</span></a>
-      </li>
-      <a href="https://www.linkedin.com/in/oliver-haney-000/" class="btn btn-social-icon btn-linkedin">
-        <span class="fa fa-linkedin"></span>
-      </a>
-      <a href="https://www.github.com/haney-oliver" class="btn btn-social-icon btn-github">
-        <span class="fa fa-github"></span>
-      </a>
-    </ul>
-  </nav>
-  <div class="container articlecontainer">
-    <a class="anchor" id=mainAnchor></a>
-    <div class="page-header" id="banner">
-      <div class="row">
-        <div class="col-lg-8 col-md-7 col-sm-6">
-          <h1>DC-6</h1>
-          <p class="lead">Walkthrough</p>
+  <!-- Main -->
+  <div id="main">
+    <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+      <ul class="nav navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#projects">projects<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#resume">resume<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#about">about<span class="sr-only">(current)</span></a>
+        </li>
+        <a href="https://www.linkedin.com/in/oliver-haney-000/" class="btn btn-social-icon btn-linkedin">
+          <span class="fa fa-linkedin"></span>
+        </a>
+        <a href="https://www.github.com/haney-oliver" class="btn btn-social-icon btn-github">
+          <span class="fa fa-github"></span>
+        </a>
+      </ul>
+    </nav>
+    <div class="container articlecontainer">
+      <a class="anchor" id=mainAnchor></a>
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>DC-6</h1>
+            <p class="lead">Walkthrough</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class=articlebody>
-    <p>This is a beginner CTF walkthrough. In this CTF, we will learn about the basics of web application pen testing. The objective is to find a single flag and obtain root on the vulnerable machine.</p>
-    <p>Step one, after configuring both my DC-6 VM and Kali VM on NAT network with Virtual Box, I run a simple nmap scan on the internal NAT network. I would normally use netdiscover to reveal the hosts on my network, but I have been running into trouble using NAT network, so I am using nmap here to find that same information. </p>
-    <img src="images/dc6/sc1.png" class="sc">
-    <p>The IP of the vulnerable machine is listed 10.0.2.14. We can see that both port 80 and 22 are exposed, so let's use firefox. When we try to navigate to the IP via HTTP, we cannot connect and see that it is trying to redirect us to the hostname `wordy` .</p>
-    <img src="images/dc6/sc2.png" class="sc">
-    <p>Now we can update our hosts file in the /etc/ directory and add the following mapping.</p>
-    <img src="images/dc6/sc3.png" class="sc">
-    <p>And now, we can attempt to navigate to the IP, this time, using the hostname.</p>
-    <img src="images/dc6/sc4.png" class="sc">
-    <p>Great! A default Wordpress blog site. Now we can use WPScan to determine the version of Wordpress being used, and enumerate possible users and vulnerabilities. Using the following commands, we leverage a clue from DCAU on Vulnhub, the creator of the CTF and initiate a scan that enumerates vulnerable plugins, vulnerable themes, users, and attempts to login as the discovered users using a password list:</p>
-    <p>
-        <code class="language-sh">cat /usr/share/wordlists/rockyou.txt | grep k01 > passwords.txt</br>
+      <div class=articlebody>
+        <p>This is a beginner CTF walkthrough. In this CTF, we will learn about the basics of web application pen
+          testing. The objective is to find a single flag and obtain root on the vulnerable machine.</p>
+        <p>Step one, after configuring both my DC-6 VM and Kali VM on NAT network with Virtual Box, I run a simple nmap
+          scan on the internal NAT network. I would normally use netdiscover to reveal the hosts on my network, but I
+          have been running into trouble using NAT network, so I am using nmap here to find that same information. </p>
+        <img src="images/dc6/sc1.png" class="sc">
+        <p>The IP of the vulnerable machine is listed 10.0.2.14. We can see that both port 80 and 22 are exposed, so
+          let's use firefox. When we try to navigate to the IP via HTTP, we cannot connect and see that it is trying to
+          redirect us to the hostname `wordy` .</p>
+        <img src="images/dc6/sc2.png" class="sc">
+        <p>Now we can update our hosts file in the /etc/ directory and add the following mapping.</p>
+        <img src="images/dc6/sc3.png" class="sc">
+        <p>And now, we can attempt to navigate to the IP, this time, using the hostname.</p>
+        <img src="images/dc6/sc4.png" class="sc">
+        <p>Great! A default Wordpress blog site. Now we can use WPScan to determine the version of Wordpress being used,
+          and enumerate possible users and vulnerabilities. Using the following commands, we leverage a clue from DCAU
+          on Vulnhub, the creator of the CTF and initiate a scan that enumerates vulnerable plugins, vulnerable themes,
+          users, and attempts to login as the discovered users using a password list:</p>
+        <p>
+          <code class="language-sh">cat /usr/share/wordlists/rockyou.txt | grep k01 > passwords.txt</br>
             wpscan --url http://wordy/ -e vp,vt,u -P passwords.txt
         </code>
-    </p>
-    <p> Apparently doing so for the password list is necessary, otherwise, brute forcing with all of rockyou.txt will take years. </p>
-    <img src="images/dc6/sc5.png" class="sc">
-    <p>And there we go, a valid combination. A quick dirb scan locates the admin directory, where we can try out our new credentials. 
-        <code class="language-sh">dirb http://wordy</code>  nets a list of directories, but reveals 
-        /wp-login.php to be the path to the login interface. Now, we just log in with the credentials discovered from the brute force, `mark helpdesk01` .</p>
-    <img src="images/dc6/sc6.png" class="sc">
-    <p>Looking at the toolbar to the left, we see the Activity Monitor. Using searchsploit, we can check to see if this plugin is vulnerable.</p>
-    <img src="images/dc6/sc7.png" class="sc">
-    <p>It appears to be vulnerable to command injection, which we might be able to exploit in order to create a reverse shell.</p>
-    <img src="images/dc6/sc8.png" class="sc">
-    <p>Searchsploit provides a path to an html file to be used to set up a netcat listener on the target machine. We can copy that file, edit it for our needs, and deploy the listener.</p>
-    <p><code class="language-sh">cp /usr/share/exploitdb/exploits/php/webapps/45274.html 45274.html</code></p>
-    <p>Edit the file to use wordy and wordy's IP address, and to listen on whichever port you choose for netcat:</p>
-    <img src="images/dc6/sc9.png" class="sc">
-    <p>Next, open the file in firefox, but do not press the button until you have created a netcat listener on your attacking machine.</p>
-    <img src="images/dc6/sc10.png" class="sc">
-    <img src="images/dc6/sc11.png" class="sc">
-    <p>Now we have a shell. Next, I navigate to the user directories. The first thing we can see that looks interesting is in the jens directory, where we see a backup script.</p>
-    <img src="images/dc6/sc12.png" class="sc">
-    <p>We do not have permissions to run it as www-data, nor do we have sudo permissions, but within the mark directory there is a folder called stuff that contains a todo list, and reveals graham’s password. Graham’s account may have sudo permissions, therefore we might be able to edit the backup script and run it to get to root.</p>
-    <img src="images/dc6/sc13.png" class="sc">
-    <p>At this point I decided to use Graham’s credentials to log directly into the DC-6 VM because operating over netcat on my Virtual Box NAT Network was a little too much for my 13” MacBook. The first thing we need to do is navigate to the backup script, and attempt to run it so we can start bash as jens. Edit the script so that it looks like this, or comment out any of the unnecessary script. </p>
-    <img src="images/dc6/sc14.png" class="sc">
-    <p>The next step is to simply run the script using sudo permissions as jens, as seen below.</p>
-    <img src="images/dc6/sc15.png" class="sc">
-    <p>Now we can see exactly what permissions jens has using,  <code class="language-sh"></code>`sudo -l` , to determine whether or  not we can somehow get to root.  </p>
-    <img src="images/dc6/sc16.png" class="sc">
-    <p>Jens only has permissions to run nmap; However nmap runs as root, so we can execute a script as root to get to root using nmap’s script capabilities.</p>
-    <p>
-        <code class="language-sh">TF=$(mktemp)</br>
+        </p>
+        <p> Apparently doing so for the password list is necessary, otherwise, brute forcing with all of rockyou.txt
+          will take years. </p>
+        <img src="images/dc6/sc5.png" class="sc">
+        <p>And there we go, a valid combination. A quick dirb scan locates the admin directory, where we can try out our
+          new credentials.
+          <code class="language-sh">dirb http://wordy</code> nets a list of directories, but reveals
+          /wp-login.php to be the path to the login interface. Now, we just log in with the credentials discovered from
+          the brute force, `mark helpdesk01` .</p>
+        <img src="images/dc6/sc6.png" class="sc">
+        <p>Looking at the toolbar to the left, we see the Activity Monitor. Using searchsploit, we can check to see if
+          this plugin is vulnerable.</p>
+        <img src="images/dc6/sc7.png" class="sc">
+        <p>It appears to be vulnerable to command injection, which we might be able to exploit in order to create a
+          reverse shell.</p>
+        <img src="images/dc6/sc8.png" class="sc">
+        <p>Searchsploit provides a path to an html file to be used to set up a netcat listener on the target machine. We
+          can copy that file, edit it for our needs, and deploy the listener.</p>
+        <p><code class="language-sh">cp /usr/share/exploitdb/exploits/php/webapps/45274.html 45274.html</code></p>
+        <p>Edit the file to use wordy and wordy's IP address, and to listen on whichever port you choose for netcat:</p>
+        <img src="images/dc6/sc9.png" class="sc">
+        <p>Next, open the file in firefox, but do not press the button until you have created a netcat listener on your
+          attacking machine.</p>
+        <img src="images/dc6/sc10.png" class="sc">
+        <img src="images/dc6/sc11.png" class="sc">
+        <p>Now we have a shell. Next, I navigate to the user directories. The first thing we can see that looks
+          interesting is in the jens directory, where we see a backup script.</p>
+        <img src="images/dc6/sc12.png" class="sc">
+        <p>We do not have permissions to run it as www-data, nor do we have sudo permissions, but within the mark
+          directory there is a folder called stuff that contains a todo list, and reveals graham’s password. Graham’s
+          account may have sudo permissions, therefore we might be able to edit the backup script and run it to get to
+          root.</p>
+        <img src="images/dc6/sc13.png" class="sc">
+        <p>At this point I decided to use Graham’s credentials to log directly into the DC-6 VM because operating over
+          netcat on my Virtual Box NAT Network was a little too much for my 13” MacBook. The first thing we need to do
+          is navigate to the backup script, and attempt to run it so we can start bash as jens. Edit the script so that
+          it looks like this, or comment out any of the unnecessary script. </p>
+        <img src="images/dc6/sc14.png" class="sc">
+        <p>The next step is to simply run the script using sudo permissions as jens, as seen below.</p>
+        <img src="images/dc6/sc15.png" class="sc">
+        <p>Now we can see exactly what permissions jens has using, <code class="language-sh"></code>`sudo -l` , to
+          determine whether or not we can somehow get to root. </p>
+        <img src="images/dc6/sc16.png" class="sc">
+        <p>Jens only has permissions to run nmap; However nmap runs as root, so we can execute a script as root to get
+          to root using nmap’s script capabilities.</p>
+        <p>
+          <code class="language-sh">TF=$(mktemp)</br>
             echo ‘os.execute(“/bin/sh”)' > $TF</br>
             sudo -u root nmap --script=$TF
         </code>
-    </p>
-    <p>And we are now logged in as root. At this point my input no longer showed up, so `root` in the picture below was actually a response to `whoami` .</p>
-    <img src="images/dc6/sc17.png" class="sc">
-    <p>Now, <code class="language-sh">cd /root</code> to find <code class="language-sh">theflag.txt</code>. And that is DC-6 finished. </p>
-    <img src="images/dc6/sc18.png" class="sc">
-    <p>Thank you for reading, I hope you have learned something, especially if you are just starting out. </p>
+        </p>
+        <p>And we are now logged in as root. At this point my input no longer showed up, so `root` in the picture below
+          was actually a response to `whoami` .</p>
+        <img src="images/dc6/sc17.png" class="sc">
+        <p>Now, <code class="language-sh">cd /root</code> to find <code class="language-sh">theflag.txt</code>. And that
+          is DC-6 finished. </p>
+        <img src="images/dc6/sc18.png" class="sc">
+        <p>Thank you for reading, I hope you have learned something, especially if you are just starting out. </p>
+      </div>
     </div>
-</div>
 </body>
+
 </html>
