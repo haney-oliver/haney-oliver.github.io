@@ -1,190 +1,228 @@
 <html>
 
 <head>
-  <title>Oliver Haney</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/bootstrap-social.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Oliver Haney</title>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/bootstrap-social.css" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:400,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <body class="is-preload">
-
-  <!-- Main -->
-  <div id="main">
-    <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
-      <ul class="nav navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#projects">projects<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#resume">resume<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#about">about<span class="sr-only">(current)</span></a>
-        </li>
-        <a href="https://www.linkedin.com/in/oliver-haney-000/" class="btn btn-social-icon btn-linkedin">
-          <span class="fa fa-linkedin"></span>
-        </a>
-        <a href="https://www.github.com/haney-oliver" class="btn btn-social-icon btn-github">
-          <span class="fa fa-github"></span>
-        </a>
-      </ul>
+    <div class="banner"></div>
+    <nav class="navbar" id="navbar">
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+            <li>
+                <a href="#resume">Resume</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li class="iconItem">
+                <a href="https://www.linkedin.com/in/oliver-haney-000/"
+                    class="btn btn-social-icon btn-github-linkedin">
+                    <span class="fa fa-linkedin"></span>
+                </a>
+            </li>
+            <li class="iconItem">
+                <a href="https://www.github.com/haney-oliver"
+                    class="btn btn-social-icon btn-github">
+                    <span class="fa fa-github"></span>
+                </a>
+            </li>
+        </ul>
     </nav>
-    <div class="container" id="mainContainer">
-      <a class="anchor" id=mainAnchor></a>
-      <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>Oliver Haney</h1>
-            <p class="lead">software engineer</p>
-          </div>
+    <!-- Main -->
+    <div id="main" class="container">
+        <h1 id="projects">Projects</h1>
+        <div class="grid">
+            <article class="article">
+                <div class="articleContent">
+                    <h2>Secure Suite</h2>
+                    <p class="card-text"><p>A software security package including a password manager, an URL
+                        analysis AI, and other security tools.</p>
+                </div>
+                <button onclick="openModal('smmodal')">Look</button>
+            </article>
+            <article class="article">
+                <div class="articleContent">
+                    <h2>Dylan Baker Photography</h2>
+                    <p class="card-text">A photography portfolio showcase and
+                        store made with dropwizard.</p>
+                </div>
+                <button onclick="openModal('dbpmodal')">Look</button>
+            </article>
+            <article>
+                <div class="articleContent">
+                    <h2>DC-6 Walkthrough</h2>
+                    <p class="card-text">A simple wordpress CTF walkthrough for
+                        those beginning in pentesting and
+                        cybersecurity
+                    </p>
+                </div>
+                <button onclick="window.location='dc6.html'">Read</button>
+            </article>
+            <article>
+                <div class="articleContent">
+                    <h2>Sick0s 1.1 Walkthrough</h2>
+                    <p class="card-text">A medium difficulty vulnerable machine
+                        walkthrough</p>
+                </div>
+                <button onclick="window.location='sick1.html'">Read</button>
+            </article>
         </div>
-      </div>
 
-      <!-- Projects -->
-      <header class="header">
-        <h2><a class="anchor" id="projects">projects</a></h2>
-      </header>
-      <div class="container">
-        <div class="row" id="port">
-          <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-            <div class="card-header">Secrets Manager
-              <button type="button" class="btn btn-warning"
-                onclick="document.getElementById('smmodal').style.display='block'">look</button>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">Secrets Manager</h4>
-              <p class="card-text">A simple password and secrets manager dropwizard web application.</p>
-            </div>
-          </div>
-          <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-            <div class="card-header">Dylan Baker Photography
-              <button type="button" class="btn btn-warning"
-                onclick="document.getElementById('dbpmodal').style.display='block'">look</button>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">Dylan Baker Photography</h4>
-              <p class="card-text">A photography portfolio showcase and store made with dropwizard.</p>
-            </div>
-          </div>
-          <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-            <div class="card-header">DC-6 Walkthrough
-              <button type="button" class="btn btn-info" onclick="window.location='dc6.html'">read</button>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">DC-6 Walkthrough</h4>
-              <p class="card-text">A simple wordpress CTF walkthrough for those beginning in pentesting and
-                cybersecurity</p>
-            </div>
-          </div>
-          <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-            <div class="card-header">Sick0s 1.1 Walkthrough
-              <button type="button" class="btn btn-info" onclick="window.location='sick1.html'">read</button>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">Sick0s 1.1 Walkthrough</h4>
-              <p class="card-text">A medium difficulty vulnerable machine walkthrough</p>
-            </div>
-          </div>
+        <!-- Resume -->
+        <h1 id="resume">Resume</h1>
+        <div class="resume">
+            <iframe src="files/resume.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                type="application/pdf" width="100%" height="500px"></iframe>
         </div>
-      </div>
 
-      <!-- Project Modals -->
-      <div class="modal" id="smmodal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Secrets Manager</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                onclick="document.getElementById('smmodal').style.display='none'">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Secrets Manager is a dropwizard project that helps a user manage and generate secure passwords.</p>
-              <img style="width: 100%; display: block;" src="images/sm_thumb.jpg">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary"
-                onclick="window.location.href='https://secrets-manager.herokuapp.com';">Go</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                onclick="document.getElementById('smmodal').style.display='none'">Close</button>
-            </div>
-          </div>
+        <!-- About-->
+        <h1 id="about">About</h1>
+        <div class="container">
+            <p class="about">
+                My name is Oliver Haney and I study computer sciences as a
+                senior at Stetson University in Deland,
+                Florida. I
+                specialize in back-end and front-end application development,
+                using these skills to package and deploy
+                artificial intelligence and cybersecurity solutions. My goal is
+                to encourage and maintain a free and
+                open
+                internet that empowers everyone to approach their most
+                knowledgeable self.
+            </p>
+            <p class="about">
+                In my early college years, I realized that I was not meant to be
+                in economics and finance, but that I
+                had a
+                passionate fascination for programming. I became motivated to
+                learn Java, C++, and Python, which I did.
+                I
+                learned
+                more about best programming practices
+                as I attempted to implement more and more complex projects, and
+                discovered new ways to write as little
+                code as
+                possible. I learned that abstraction is a
+                powerful tool, but I still lacked the experience to use it to
+                guide my programming in a meaningful and
+                efficient
+                way.
+            </p>
+            <p class="about">
+                As I accumulated these new skills across a variety of
+                technologies and areas of study, I felt I was
+                ready
+                to apply for more internships. LSQ gave me my first internship
+                opportunity, and it was everything an
+                intership
+                should be.
+                The management including my direct boss were extremely
+                accommodating, encouraging, and generally helpful
+                in
+                my development as a software engineer. I got to work on and even
+                create primary business services that
+                increased
+                in both impact and complexity.
+            </p>
+            <p class="about">
+                Now, I am focusing on my first open source projects, <a
+                    href="https://secrets-manager.firebaseapp.com">Secrets
+                    Manager and Secure Suite</a>. You can follow the link to the
+                projects landing page, which hosts all
+                resources
+                for getting started. Secrets Manager is an augmented password
+                manager optimized for security. Also
+                included in
+                the package is a machine learning based malicious URL traffic
+                detection tool set called MalURLNet, a
+                component
+                of Secure Suite.
+            </p>
         </div>
-      </div>
-
-      <div class="modal" id="dbpmodal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Dylan Baker Photography</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                onclick="document.getElementById('dbpmodal').style.display='none'">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Dylan Baker Photography is a dropwizard project that showcases an photography protfolio and, using the
-                Stripe API, has a web store to purchase prints.</p>
-              <img style="width: 100%; display: block;" src="images/dbp_thumb.jpg">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary"
-                onclick="window.location.href='https://dylanbakerphotography.com';">Go</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                onclick="document.getElementById('dbpmodal').style.display='none'">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Resume -->
-      <header class="header">
-        <h2><a class="anchor" id="resume">resume</a></h2>
-      </header>
-      <embed src="files/resume.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%"
-        height="1100px" />
-
-      <!-- About-->
-      <header class="header">
-        <h2><a class="anchor" id="about">about</a></h2>
-      </header>
-      <p>
-        My name is Oliver Haney and I study computer sciences at Stetson University in Deland, Florida. I am a senior,
-        and have learned a lot since I first got into any sort of programming. I mainly specialize in both backend and
-        frontend web application development,
-        but have been recently been branching out into other computer science related fields such as machine learning
-        for business applications, and cybersecurity. Starting this semester, I plan to create an open source security
-        package, containing a password manager, malicious URL detection, and more. I have about three years of
-        experience with Java, and it has quickly become my best
-        language. I am very familiar with the Dropwizard framework, which I use almost daily in the creation of web
-        applications.
-        I have knowledge in other programming languages, such as python, c++, c#, and others, but Java remains my most
-        popular choice.
-      </p>
-      <p>
-        I became motivated to learn Java, C++, and Python, which I did. I learned more about best programming practices
-        as I attempted to
-        implement more and more complex projects, and discovered new ways to write as little code as possible. I learned
-        that abstraction is a
-        powerful tool, but I still lacked the experience to use it to guide my programming in a meaningful and efficient
-        way. As I
-        accumulated these new skills across a variety of technologies and areas of study, I felt I was ready to apply
-        for more internships.
-        LSQ gave me my first internship opportunity, and it was the most amazing internship. The management including my
-        direct boss were
-        extremely accommodating, encouraging, and generally helpful in my development as a software engineer. I got to
-        seek
-        guidance from some of the most knowledgeable people I have known.
-      </p>
     </div>
+    <!-- Project Modals -->
+    <div class="modal" id="smmodal">
+        <div class="modal-body">
+            <h2>Secure Suite</h2>
+            <p>A software security package including a password manager, an URL
+                analysis AI, and other security tools.</p>
+            <img class="modal-image" src="img/sm_thumb.jpg">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                    onclick="window.location.href='https://haney-oliver.github.io/securesuite';">Go</button>
+                <button type="button" class="btn btn-secondary"
+                    data-dismiss="modal"
+                    onclick="closeModal('smmodal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="dbpmodal">
+        <div class="modal-body">
+            <h2>Dylan Baker Photography</h2>
+            <p>Dylan Baker Photography is a dropwizard project that showcases an
+                photography protfolio and, using the
+                Stripe API, has a web store to purchase prints.</p>
+            <img class="modal-image" src="img/dbp_thumb.jpg">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                    onclick="window.location.href='https://dylanbakerphotography.com';">Go</button>
+                <button type="button" class="btn btn-secondary"
+                    data-dismiss="modal"
+                    onclick="closeModal('dbpmodal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+    <footer>
+    </footer>
+    <script>
+        window.onscroll = function () { myFunction() };
+
+        // Get the navbar
+        var navbar = document.getElementById("navbar");
+
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
+
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.visibility = 'visible'
+            document.getElementById('overlay').style.visibility = 'visible'
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.visibility = 'hidden'
+            document.getElementById('overlay').style.visibility = 'hidden'
+        }
+    </script>
 </body>
 
 </html>
