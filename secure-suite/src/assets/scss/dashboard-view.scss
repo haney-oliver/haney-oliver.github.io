@@ -1,0 +1,52 @@
+@use 'base';
+
+.doughnut {
+    width: 40%;
+    padding: 1.25rem;
+    min-height: 500px;
+    display: block;
+    float: left;
+}
+
+.doughnut.container {
+    margin: 0.5rem 0.5rem 0.5rem 2rem;
+}
+
+.stats {
+    display: block;
+    float: right;
+    text-align: left;
+    margin: 4rem 3rem 0 0;
+}
+
+#good {
+    color: #4f6fff;
+}
+
+#mal {
+    color: #ff6384;
+}
+
+#expand-url-form {
+    display: block;
+    float: right;
+    width: 45%;
+    margin: 1rem;
+}
+
+#analyze-url-form {
+    display: block;
+    float: right;
+    width: 45%;
+    margin: 1rem;
+}
+
+.url-good {
+    background-color: #dde4ff;
+    color: #2f55ff;
+}
+
+.url-bad {
+    background-color: #ffeff3;
+    color: #ff466e;
+}

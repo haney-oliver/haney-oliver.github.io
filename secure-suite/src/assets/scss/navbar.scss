@@ -1,0 +1,78 @@
+@use "base";
+
+.navbar {
+    height: 70px;
+    width: 100%;
+    background-color: #6480ff;
+    margin: 0;
+    z-index: 100;
+
+    .title {
+        display: block;
+        float: left;
+        margin: 1.35rem 0 0 1rem;
+        font-weight: 700;
+        color: #c2c3ff;
+    }
+
+    .options {
+        float: right;
+        list-style-type: none;
+        display: block;
+        padding: 0 1rem 0 0;
+        margin-top: 1.25rem;
+
+
+        li {
+            display: inline-block;
+            font-size: 14px;
+
+            a {
+                cursor: pointer;
+                text-decoration: none;
+                color: rgb(255, 255, 255);
+                padding: 1rem;
+            }
+
+            a:hover {
+                background-color: #4f6fff;
+                transition: 0.5s;
+            }
+
+            .alternative:hover {
+                color: #4f6fff;
+                background-color: #ffffff;
+                transition: 0.5s;
+            }
+        }
+    }
+}
+
+.list-enter {
+    opacity: 0;
+  }
+  .list-enter-active {
+    animation: slide-in .5s ease-out forwards;
+  }
+  .list-leave-to, .list-leave-active {
+    opacity: 0;
+    animation: slide-out .5s ease-out forwards;
+  }
+  
+  @keyframes slide-in {
+    from { 
+      transform: translateY(-40px);   
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slide-out {
+    from { 
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-40px);
+    }
+  }
+
