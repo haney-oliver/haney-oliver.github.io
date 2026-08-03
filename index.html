@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oliver Haney — Resume</title>
+  <meta name="description" content="Oliver Haney — Senior Software Engineer. Kubernetes, AWS, data platforms, and CI/CD.">
+  <meta name="author" content="Oliver Haney">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="debug">
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">Oliver Haney</h1>
+      <span class="subtitle">Senior Software Engineer</span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v2026.2</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2026-08-02</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Email</th>
+    <td class="width-auto"><a href="mailto:haney.oliver@gmail.com">haney.oliver@gmail.com</a></td>
+    <th class="width-min">PDF</th>
+    <td><a href="ResumeOliverHaney.pdf">Download</a></td>
+  </tr>
+  <tr>
+    <th class="width-min">Links</th>
+    <td class="width-auto"><a href="https://linkedin.com/in/oliver-haney-000">LinkedIn</a> · <a href="https://github.com/haney-oliver">GitHub</a></td>
+    <th class="width-min">Location</th>
+    <td>Remote (US)</td>
+  </tr>
+</table>
+
+<h2 id="highlights">Career Highlights</h2>
+<ul>
+  <li>Developed Kubernetes-based data and AI platforms supporting <strong>27 data sources</strong>, approximately <strong>1&nbsp;TB of searchable business data</strong>, and real-time financial transaction workflows.</li>
+  <li>As part of a three-engineer initiative, helped deliver <strong>$800,000 in recurring annual AWS savings</strong> while improving infrastructure reliability through resource rightsizing, cross-AZ traffic reduction, standardized tagging, and centralized cost and utilization monitoring.</li>
+  <li>Reduced a monolithic CI pipeline for a 5-year-old project from <strong>four hours to approximately 50 minutes</strong> while adding automated integration testing against an ephemeral, production-like environment.</li>
+</ul>
+
+<h2 id="experience">Experience</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th class="width-auto">Senior Software Engineer — Clarity Innovations</th>
+      <th class="width-min" style="white-space: pre;">2025–Present</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">Remote</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>Replaced a four-hour build pipeline comprising 70+ Makefiles and 400+ targets with 11 composable Taskfiles and approximately 100 total tasks, reducing execution time to about 50 minutes while adding automated integration testing.</li>
+  <li>Implemented reusable Pytest utilities, introduced integration tests and a portable Proxmox machine that provisions a production-like environment for regression testing our Kubernetes deployment on every pipeline, increasing release confidence across 10 services and three environments.</li>
+  <li>Designed a declarative NiFi delivery system for ephemeral environments, replacing noisy, unreadable JSON exports with simplified YAML specifications and a Python/Jinja application that idempotently reconciles the NiFi canvas, enabling meaningful code review and faster pipeline iteration.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th class="width-auto">Software Reliability Engineer / Data Engineer — LSQ</th>
+      <th class="width-min" style="white-space: pre;">2019–2025</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">Orlando, Florida</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>Collaborated on a three-engineer cost-optimization initiative that delivered approximately <strong>$800,000 in recurring annual AWS savings</strong> by identifying stale resources, reducing cross-AZ traffic, rightsizing RDS, optimizing Lambda workloads, and building New Relic dashboards to track AWS cost and utilization.</li>
+  <li>As a part of that team, maintained approximately 50 reusable Terraform modules across eight tenants, four environments, three AWS accounts, and three Kubernetes clusters. Set up and used Terragrunt repositories with standardized configuration and tagging to make infrastructure self-service, auditable, and consistent while providing reliable cost and usage data to accounting.</li>
+  <li>Built a governed, event-driven data platform spanning 27 sources, using Knative for eventing and serving and Kubeflow and MLflow for model development and experiment tracking; designed governance services that classified, transformed, tagged, and promoted data for safe downstream use.</li>
+  <li>Implemented a production RAG platform that indexed approximately 10&nbsp;TB of financial records, company information, personnel data, and lead correspondence in Milvus, giving sales users fast access to information previously buried in complex documents.</li>
+  <li>Built the platform's ingestion and serving architecture using S3, MongoDB, RDS, Kubernetes, OpenLLM, LangChain, and FastAPI; evaluated more than 10 models before delivering the system to users on the sales team.</li>
+</ul>
+
+<h2 id="education">Education</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th class="width-auto">Stetson University · DeLand, Florida</th>
+      <th class="width-min">2020</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">Bachelor of Science in Computer Science, Minor in Economics</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="skills">Technical Skills</h2>
+
+<ul class="tree">
+<li>
+<p style="margin: 0;"><strong>skills/</strong></p>
+<ul>
+<li>reliability-and-platforms
+<ul>
+<li>Kubernetes · EKS · Knative</li>
+<li>Terraform · Terragrunt · Helm</li>
+<li>FluxCD · Argo CD · Docker</li>
+<li>New Relic</li>
+</ul>
+</li>
+<li>cloud-and-delivery
+<ul>
+<li>AWS · GCP · Azure</li>
+<li>GitLab CI · Jenkins · CodePipeline</li>
+<li>Atlantis · Proxmox</li>
+</ul>
+</li>
+<li>software-and-data
+<ul>
+<li>Python · Java · Go</li>
+<li>FastAPI · Flask · Django · Spring</li>
+<li>NiFi · MLflow · Kubeflow · Milvus</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<hr>
+
+<p>
+  Design based on <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a>
+  by Oskar Wickström.
+</p>
+
+<div class="debug-grid"></div>
+<script src="index.js"></script>
+</body>
+</html>
