@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oliver Haney — Projects</title>
+  <meta name="description" content="Projects by Oliver Haney — tools for Kubernetes, GitOps, and platform engineering.">
+  <meta name="author" content="Oliver Haney">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="debug">
+
+<nav class="navbar" aria-label="Site">
+  <a href="index.html">Resume</a>
+  <a href="projects.html" aria-current="page">Projects</a>
+</nav>
+
+<table class="header">
+  <tr>
+    <td class="width-auto">
+      <h1 class="title">Projects</h1>
+      <span class="subtitle">Oliver Haney</span>
+    </td>
+  </tr>
+</table>
+
+<h2 id="fluxswitch">fluxswitch</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th class="width-auto">Version switcher for the Flux CLI, in Go</th>
+      <th class="width-min"><a class="badge" href="https://github.com/everythingisacomputer/fluxswitch/releases/latest"><img src="https://img.shields.io/github/v/release/everythingisacomputer/fluxswitch" alt="latest fluxswitch release"></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><a href="https://github.com/everythingisacomputer/fluxswitch">github.com/everythingisacomputer/fluxswitch</a> · MIT</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  Switch between versions of the <a href="https://github.com/fluxcd/flux2">Flux CLI</a>
+  the way <a href="https://github.com/warrensbox/terraform-switcher">tfswitch</a> does
+  for Terraform: one command to download, verify, and activate any release.
+</p>
+
+<figure>
+  <img src="fluxswitch-demo.gif" alt="Terminal recording: the fluxswitch picker opens, a version is selected and installed after a confirmation prompt, and flux --version prints the newly activated version.">
+  <figcaption>Pick a version, confirm, and flux is switched — checksum-verified.</figcaption>
+</figure>
+
+<ul>
+  <li>Interactive terminal picker (bubbletea) — installed versions first, arrow keys, fuzzy search, single-key download and uninstall.</li>
+  <li>Every download is verified against the release&rsquo;s published SHA-256 checksums before it touches disk.</li>
+  <li>Switching atomically repoints a symlink, so <code>flux</code> always resolves — even mid-switch.</li>
+  <li>Distributed via GitHub releases and a Homebrew tap serving macOS and Linux from one formula.</li>
+  <li>CI gates every release behind unit tests, <code>govulncheck</code>, and <code>gosec</code>.</li>
+</ul>
+
+<pre>
+$ brew tap everythingisacomputer/tap
+$ brew install fluxswitch
+$ fluxswitch 2.9.3
+Downloading flux 2.9.3...
+Switched flux to 2.9.3 (~/.fluxswitch/bin/flux)
+</pre>
+
+<hr>
+
+<p>
+  Design based on <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a>
+  by Oskar Wickström.
+</p>
+
+<div class="debug-grid"></div>
+<script src="index.js"></script>
+</body>
+</html>

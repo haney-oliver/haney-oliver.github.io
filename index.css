@@ -172,6 +172,43 @@ th {
   width: 100%;
 }
 
+.navbar {
+  position: relative;
+  top: calc(var(--line-height) / 2);
+  display: flex;
+  width: calc(round(down, 100%, 1ch));
+  margin: 0 0 var(--line-height);
+  border: var(--border-thickness) solid var(--text-color);
+}
+.navbar a {
+  display: block;
+  margin: 0;
+  padding:
+    calc((var(--line-height) / 2))
+    calc(1ch - var(--border-thickness) / 2)
+    calc((var(--line-height) / 2) - (var(--border-thickness)))
+  ;
+  line-height: var(--line-height);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-right: var(--border-thickness) solid var(--text-color);
+}
+.navbar a:hover {
+  background: var(--background-color-alt);
+}
+.navbar a[aria-current="page"] {
+  background: var(--text-color);
+  color: var(--background-color);
+}
+
+.badge img {
+  display: inline-block;
+  width: auto;
+  height: var(--line-height);
+  vertical-align: top;
+}
+
 .header {
   margin-bottom: calc(var(--line-height) * 2);
 }
