@@ -96,7 +96,7 @@ Switched flux to 2.9.3 (~/.fluxswitch/bin/flux)
 </figure>
 
 <ul>
-  <li>Interactive init wizard (huh) that scaffolds a clusters &rarr; overlays &rarr; services layout, recorded in <code>fluxboost.yaml</code> as the source of truth for every later command.</li>
+  <li>Interactive init wizard (built with <a href="https://github.com/charmbracelet/huh">huh</a>) that scaffolds a clusters &rarr; overlays &rarr; services layout, recorded in <code>fluxboost.yaml</code> as the source of truth for every later command.</li>
   <li>Opt-in platform service registry — cert-manager, Istio, external-secrets, external-dns, Vault, Kubecost, and more — with hard requirements auto-added and <code>dependsOn</code> chains filtered to your selection.</li>
   <li>Provider-aware rendering for AWS, GCP, and bare metal: DNS01 solvers, Workload Identity / IRSA annotations, and external-dns wired per provider.</li>
   <li>Grows with the repo: <code>env add</code>, <code>service add/remove</code>, namespace-scoped <code>tenant add</code>, and <code>app add</code> with optional Flux image automation.</li>
