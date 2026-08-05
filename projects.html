@@ -68,6 +68,49 @@ Downloading flux 2.9.3...
 Switched flux to 2.9.3 (~/.fluxswitch/bin/flux)
 </pre>
 
+<h2 id="fluxboost">fluxboost</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th class="width-auto">Flux GitOps repository scaffolder, in Go</th>
+      <th class="width-min"><a class="badge" href="https://github.com/everythingisacomputer/fluxboost/releases/latest"><img src="https://img.shields.io/github/v/release/everythingisacomputer/fluxboost" alt="latest fluxboost release"></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><a href="https://github.com/everythingisacomputer/fluxboost">github.com/everythingisacomputer/fluxboost</a> · MIT</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  Scaffold <a href="https://fluxcd.io">Flux</a> GitOps repositories with opt-in
+  platform services, SOPS secrets encryption, and namespace-scoped tenants,
+  for AWS, GCP, and bare metal clusters.
+</p>
+
+<figure>
+  <img src="fluxboost-demo.gif" alt="Terminal recording: the fluxboost init wizard collects domain, platform, credentials, profile, and SOPS choices, then scaffolds the repo.">
+  <figcaption>One wizard from empty directory to bootstrap-ready GitOps repo.</figcaption>
+</figure>
+
+<ul>
+  <li>Interactive init wizard (huh) that scaffolds a clusters &rarr; overlays &rarr; services layout, recorded in <code>fluxboost.yaml</code> as the source of truth for every later command.</li>
+  <li>Opt-in platform service registry — cert-manager, Istio, external-secrets, external-dns, Vault, Kubecost, and more — with hard requirements auto-added and <code>dependsOn</code> chains filtered to your selection.</li>
+  <li>Provider-aware rendering for AWS, GCP, and bare metal: DNS01 solvers, Workload Identity / IRSA annotations, and external-dns wired per provider.</li>
+  <li>Grows with the repo: <code>env add</code>, <code>service add/remove</code>, namespace-scoped <code>tenant add</code>, and <code>app add</code> with optional Flux image automation.</li>
+  <li><code>fluxboost check</code> builds every kustomization with an embedded kustomize and flags undefined substitution variables before Flux ever sees them.</li>
+</ul>
+
+<pre>
+$ brew tap everythingisacomputer/tap
+$ brew install fluxboost
+$ fluxboost init platform
+$ fluxboost tenant add team-a
+$ fluxboost check
+</pre>
+
 <hr>
 
 <p>
